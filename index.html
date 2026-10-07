@@ -1,268 +1,516 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FutureFits</title>
+    <meta charset="UTF-8">
 
-<style>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Segoe UI',sans-serif;
-}
+    <meta
+        name="description"
+        content="KOFIVE — Vista sua visão. Streetwear, estampas autorais e peças criadas para quem tem identidade."
+    >
 
-body{
-min-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-background:
-linear-gradient(135deg,#0f172a,#1e293b,#334155);
-padding:30px;
-}
+    <meta name="theme-color" content="#05070d">
 
-.container{
-width:100%;
-max-width:1200px;
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:30px;
-}
+    <title>KOFIVE — Wear Your Vision</title>
 
-.glass{
-background:rgba(255,255,255,0.08);
-backdrop-filter:blur(20px);
-border:1px solid rgba(255,255,255,0.15);
-border-radius:25px;
-padding:30px;
-box-shadow:0 8px 32px rgba(0,0,0,.3);
-}
+    <!-- Favicon opcional -->
+    <!-- <link rel="icon" href="assets/favicon.png"> -->
 
-h1{
-color:white;
-margin-bottom:20px;
-}
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-label{
-display:block;
-color:white;
-margin-top:15px;
-margin-bottom:5px;
-}
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet"
+    >
 
-input,select{
-width:100%;
-padding:12px;
-border:none;
-border-radius:12px;
-background:rgba(255,255,255,.1);
-color:white;
-}
-
-button{
-width:100%;
-padding:15px;
-margin-top:20px;
-border:none;
-border-radius:15px;
-cursor:pointer;
-font-weight:bold;
-font-size:16px;
-background:#38bdf8;
-color:white;
-}
-
-.preview{
-display:flex;
-justify-content:center;
-align-items:center;
-height:600px;
-}
-
-.avatar{
-position:relative;
-display:flex;
-flex-direction:column;
-align-items:center;
-transition:.5s;
-}
-
-.head{
-width:80px;
-height:80px;
-border-radius:50%;
-background:#f4c7a1;
-}
-
-.body{
-margin-top:5px;
-border-radius:20px;
-background:#60a5fa;
-}
-
-.leg-container{
-display:flex;
-gap:15px;
-}
-
-.leg{
-background:#334155;
-border-radius:20px;
-}
-
-.info{
-color:white;
-margin-top:20px;
-text-align:center;
-}
-
-@media(max-width:900px){
-.container{
-grid-template-columns:1fr;
-}
-}
-
-</style>
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<div class="container">
+    <!-- ============================= -->
+    <!-- NAVBAR -->
+    <!-- ============================= -->
 
-<div class="glass">
+    <header class="header">
 
-<h1>FutureFits</h1>
+        <nav class="navbar glass">
 
-<label>Nome</label>
-<input id="nome">
+            <a href="#inicio" class="logo">
+                KO<span>FIVE</span>
+            </a>
 
-<label>Gênero</label>
-<select id="genero">
-<option value="homem">Homem</option>
-<option value="mulher">Mulher</option>
-</select>
+            <div class="nav-links" id="navLinks">
 
-<label>Altura (cm)</label>
-<input id="altura" type="number">
+                <a href="#inicio" class="nav-link active">
+                    Início
+                </a>
 
-<label>Peso (kg)</label>
-<input id="peso" type="number">
+                <a href="#produtos" class="nav-link">
+                    Produtos
+                </a>
 
-<label>Ombros (cm)</label>
-<input id="ombros" type="number">
+                <a href="#marca" class="nav-link">
+                    Nossa Marca
+                </a>
 
-<label>Cintura (cm)</label>
-<input id="cintura" type="number">
+                <a href="#ideia" class="nav-link">
+                    Sua Estampa
+                </a>
 
-<label>Quadril (cm)</label>
-<input id="quadril" type="number">
+            </div>
 
-<button onclick="gerarAvatar()">
-Gerar Avatar
-</button>
+            <div class="nav-actions">
 
-</div>
+                <button
+                    class="cart-button"
+                    id="cartButton"
+                    aria-label="Carrinho"
+                >
+                    🛍️
 
-<div class="glass preview">
+                    <span
+                        class="cart-count"
+                        id="cartCount"
+                    >
+                        0
+                    </span>
+                </button>
 
-<div>
+                <button
+                    class="menu-button"
+                    id="menuButton"
+                    aria-label="Abrir menu"
+                >
+                    ☰
+                </button>
 
-<div class="avatar" id="avatar">
+            </div>
 
-<div class="head"></div>
+        </nav>
 
-<div class="body" id="body"></div>
+    </header>
 
-<div class="leg-container">
-<div class="leg" id="leg1"></div>
-<div class="leg" id="leg2"></div>
-</div>
 
-</div>
+    <main>
 
-<div class="info" id="info">
-Preencha os dados e clique em gerar.
-</div>
+        <!-- ============================= -->
+        <!-- HERO -->
+        <!-- ============================= -->
 
-</div>
+        <section
+            class="hero"
+            id="inicio"
+        >
 
-</div>
+            <div class="container hero-grid">
 
-</div>
+                <div class="hero-content">
 
-<script>
+                    <div class="eyebrow">
 
-function gerarAvatar(){
+                        <span class="status-dot"></span>
 
-const genero =
-document.getElementById('genero').value;
+                        STREETWEAR • DESIGN • IDENTIDADE
 
-const altura =
-Number(document.getElementById('altura').value);
+                    </div>
 
-const peso =
-Number(document.getElementById('peso').value);
+                    <h1>
 
-const ombros =
-Number(document.getElementById('ombros').value);
+                        Vista sua
 
-const cintura =
-Number(document.getElementById('cintura').value);
+                        <span>
+                            visão.
+                        </span>
 
-const quadril =
-Number(document.getElementById('quadril').value);
+                    </h1>
 
-const body =
-document.getElementById('body');
+                    <p class="hero-description">
 
-const leg1 =
-document.getElementById('leg1');
+                        A KOFIVE nasceu para transformar ideias em
+                        estampas que têm presença.
 
-const leg2 =
-document.getElementById('leg2');
+                        Escolha seu estilo, encontre sua peça
+                        ou ajude a criar a próxima coleção.
 
-const escala =
-altura/170;
+                    </p>
 
-let largura = ombros;
+                    <div class="hero-buttons">
 
-if(genero==="mulher"){
-largura = quadril;
-body.style.background="#f472b6";
-}else{
-body.style.background="#60a5fa";
-}
+                        <a
+                            href="#produtos"
+                            class="button button-primary"
+                        >
+                            Explorar coleção
+                            <span>→</span>
+                        </a>
 
-body.style.width =
-(Math.max(largura,40)*2)+"px";
+                        <a
+                            href="#ideia"
+                            class="button button-secondary"
+                        >
+                            Sugerir uma estampa
+                        </a>
 
-body.style.height =
-(180*escala)+"px";
+                    </div>
 
-leg1.style.width="35px";
-leg2.style.width="35px";
+                    <div class="hero-stats">
 
-leg1.style.height=
-(120*escala)+"px";
+                        <div>
+                            <strong>01</strong>
+                            <span>DROP INICIAL</span>
+                        </div>
 
-leg2.style.height=
-(120*escala)+"px";
+                        <div>
+                            <strong>∞</strong>
+                            <span>IDEIAS</span>
+                        </div>
 
-document.getElementById('info').innerHTML=
-`
-${genero.toUpperCase()}<br>
-${altura} cm<br>
-${peso} kg<br>
-Ombros: ${ombros} cm<br>
-Cintura: ${cintura} cm<br>
-Quadril: ${quadril} cm
-`;
+                        <div>
+                            <strong>100%</strong>
+                            <span>AUTORAL</span>
+                        </div>
 
-}
+                    </div>
 
-</script>
+                </div>
+
+
+                <!-- HERO VISUAL -->
+
+                <div class="hero-visual glass">
+
+                    <div class="hero-glow"></div>
+
+                    <div class="shirt-placeholder">
+
+                        <div class="shirt-print">
+                            K5
+                        </div>
+
+                    </div>
+
+                    <div class="hero-label">
+
+                        <small>
+                            DROP 01 / 2026
+                        </small>
+
+                        <strong>
+                            LIMITED KOFIVE
+                        </strong>
+
+                    </div>
+
+                    <div class="hero-badge">
+                        KOFIVE
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ============================= -->
+        <!-- PRODUTOS -->
+        <!-- ============================= -->
+
+        <section
+            class="products-section"
+            id="produtos"
+        >
+
+            <div class="container">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <span class="section-kicker">
+                            COLEÇÃO
+                        </span>
+
+                        <h2>
+                            Escolha seu
+                            <span>statement.</span>
+                        </h2>
+
+                    </div>
+
+                    <p>
+
+                        Peças pensadas para quem prefere
+                        identidade a tendência.
+
+                    </p>
+
+                </div>
+
+
+                <!-- FILTROS -->
+
+                <div
+                    class="filters"
+                    id="filters"
+                >
+
+                    <button
+                        class="filter active"
+                        data-filter="Todos"
+                    >
+                        Todos
+                    </button>
+
+                    <button
+                        class="filter"
+                        data-filter="Oversized"
+                    >
+                        Oversized
+                    </button>
+
+                    <button
+                        class="filter"
+                        data-filter="Classic"
+                    >
+                        Classic
+                    </button>
+
+                    <button
+                        class="filter"
+                        data-filter="Limited"
+                    >
+                        Limited
+                    </button>
+
+                </div>
+
+
+                <!-- GRID -->
+
+                <div
+                    class="products-grid"
+                    id="productsGrid"
+                >
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ============================= -->
+        <!-- NOSSA MARCA -->
+        <!-- ============================= -->
+
+        <section
+            class="brand-section"
+            id="marca"
+        >
+
+            <div class="container">
+
+                <div class="brand-panel glass">
+
+                    <div class="brand-content">
+
+                        <span class="section-kicker">
+                            MANIFESTO KOFIVE
+                        </span>
+
+                        <h2>
+
+                            Não é só uma camisa.
+
+                            <br>
+
+                            <span>
+                                É sua assinatura.
+                            </span>
+
+                        </h2>
+
+                        <p>
+
+                            Queremos construir uma marca onde a
+                            comunidade também participa da criação.
+
+                            Nossas estampas misturam minimalismo,
+                            cultura urbana e elementos gráficos
+                            marcantes.
+
+                        </p>
+
+                        <div class="brand-stats">
+
+                            <div class="brand-stat">
+
+                                <strong>
+                                    01
+                                </strong>
+
+                                <span>
+                                    DROP INICIAL
+                                </span>
+
+                            </div>
+
+                            <div class="brand-stat">
+
+                                <strong>
+                                    ∞
+                                </strong>
+
+                                <span>
+                                    IDEIAS POSSÍVEIS
+                                </span>
+
+                            </div>
+
+                            <div class="brand-stat">
+
+                                <strong>
+                                    100%
+                                </strong>
+
+                                <span>
+                                    AUTORAL
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- SUGESTÃO -->
+
+                    <div
+                        class="idea-area"
+                        id="ideia"
+                    >
+
+                        <span class="section-kicker">
+                            FAÇA PARTE
+                        </span>
+
+                        <h2>
+                            Tem uma ideia?
+                        </h2>
+
+                        <p>
+
+                            Sugira uma estampa para a
+                            próxima coleção KOFIVE.
+
+                        </p>
+
+                        <form
+                            id="ideaForm"
+                            class="idea-form"
+                        >
+
+                            <input
+                                type="text"
+                                id="ideaName"
+                                class="input"
+                                placeholder="Seu nome"
+                                required
+                            >
+
+                            <input
+                                type="email"
+                                id="ideaEmail"
+                                class="input"
+                                placeholder="Seu e-mail"
+                                required
+                            >
+
+                            <textarea
+                                id="ideaText"
+                                class="input textarea"
+                                placeholder="Descreva sua ideia de estampa..."
+                                required
+                            ></textarea>
+
+                            <button
+                                type="submit"
+                                class="button button-primary"
+                            >
+                                Enviar ideia ✦
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ============================= -->
+    <!-- FOOTER -->
+    <!-- ============================= -->
+
+    <footer>
+
+        <div class="container footer-content">
+
+            <div class="footer-logo">
+                KO<span>FIVE</span>
+            </div>
+
+            <p>
+                © <span id="year"></span> KOFIVE.
+                Wear your vision.
+            </p>
+
+            <div class="footer-socials">
+
+                <a href="#" aria-label="Instagram">
+                    Instagram
+                </a>
+
+                <a href="#" aria-label="TikTok">
+                    TikTok
+                </a>
+
+                <a href="#" aria-label="Contato">
+                    Contato
+                </a>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- TOAST -->
+
+    <div
+        class="toast"
+        id="toast"
+    ></div>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="script.js"></script>
 
 </body>
 </html>
