@@ -8,13 +8,11 @@
    PRODUTOS
 ==========================================
 
-   TROQUE OS LINKS "image" PELOS LINKS
-   DIRETOS DAS SUAS IMAGENS DO IMGUR.
+   COLOQUE AQUI OS LINKS DIRETOS DO IMGUR.
 
-   Exemplo:
+   front = imagem da frente
 
-   image:
-   "https://i.imgur.com/ABC1234.png"
+   back = imagem das costas
 
 ========================================== */
 
@@ -22,113 +20,169 @@
 const products = [
 
     {
-        name: "K5 / Core Black",
+        id: 1,
+
+        name: "K5 CORE BLACK",
+
         category: "Classic",
+
         price: "R$ 129,90",
 
-        image:
-            "https://i.imgur.com/SEU-LINK-01.png",
+        description:
+            "Camiseta KOFIVE com estampa autoral K5. Modelagem confortável e identidade minimalista.",
 
-        print: "K5",
-        color: "#58aaff"
+        front:
+            "https://i.imgur.com/SEU-FRONT-01.png",
+
+        back:
+            "https://i.imgur.com/SEU-BACK-01.png"
     },
 
 
     {
-        name: "Blue Signal",
+        id: 2,
+
+        name: "BLUE SIGNAL",
+
         category: "Oversized",
+
         price: "R$ 149,90",
 
-        image:
-            "https://i.imgur.com/SEU-LINK-02.png",
+        description:
+            "Uma peça oversized criada para quem quer presença e conforto.",
 
-        print: "SIGNAL",
-        color: "#328dff"
+        front:
+            "https://i.imgur.com/SEU-FRONT-02.png",
+
+        back:
+            "https://i.imgur.com/SEU-BACK-02.png"
     },
 
 
     {
-        name: "No Rules",
+        id: 3,
+
+        name: "NO RULES",
+
         category: "Limited",
+
         price: "R$ 169,90",
 
-        image:
-            "https://i.imgur.com/SEU-LINK-03.png",
+        description:
+            "Edição limitada KOFIVE. Uma estampa feita para representar liberdade.",
 
-        print: "NO//",
-        color: "#83c4ff"
+        front:
+            "https://i.imgur.com/SEU-FRONT-03.png",
+
+        back:
+            "https://i.imgur.com/SEU-BACK-03.png"
     },
 
 
     {
-        name: "KOFIVE Chrome",
+        id: 4,
+
+        name: "KOFIVE CHROME",
+
         category: "Limited",
+
         price: "R$ 159,90",
 
-        image:
-            "https://i.imgur.com/SEU-LINK-04.png",
+        description:
+            "Visual chrome com identidade futurista KOFIVE.",
 
-        print: "KOF",
-        color: "#c4e4ff"
+        front:
+            "https://i.imgur.com/SEU-FRONT-04.png",
+
+        back:
+            "https://i.imgur.com/SEU-BACK-04.png"
     },
 
 
     {
-        name: "Midnight Code",
+        id: 5,
+
+        name: "MIDNIGHT CODE",
+
         category: "Oversized",
+
         price: "R$ 149,90",
 
-        image:
-            "https://i.imgur.com/SEU-LINK-05.png",
+        description:
+            "Uma leitura digital do universo KOFIVE.",
 
-        print: "0101",
-        color: "#479eff"
+        front:
+            "https://i.imgur.com/SEU-FRONT-05.png",
+
+        back:
+            "https://i.imgur.com/SEU-BACK-05.png"
     },
 
 
     {
-        name: "After Dark",
+        id: 6,
+
+        name: "AFTER DARK",
+
         category: "Classic",
+
         price: "R$ 129,90",
 
-        image:
-            "https://i.imgur.com/SEU-LINK-06.png",
+        description:
+            "Minimalismo, preto e identidade.",
 
-        print: "AD",
-        color: "#6bb5ff"
+        front:
+            "https://i.imgur.com/SEU-FRONT-06.png",
+
+        back:
+            "https://i.imgur.com/SEU-BACK-06.png"
     },
 
 
     {
-        name: "Electric Blue",
+        id: 7,
+
+        name: "ELECTRIC BLUE",
+
         category: "Oversized",
+
         price: "R$ 149,90",
 
-        image:
-            "https://i.imgur.com/SEU-LINK-07.png",
+        description:
+            "Azul elétrico inspirado na estética digital da KOFIVE.",
 
-        print: "K5+",
-        color: "#1e7eff"
+        front:
+            "https://i.imgur.com/SEU-FRONT-07.png",
+
+        back:
+            "https://i.imgur.com/SEU-BACK-07.png"
     },
 
 
     {
-        name: "First Drop",
+        id: 8,
+
+        name: "FIRST DROP",
+
         category: "Limited",
+
         price: "R$ 179,90",
 
-        image:
-            "https://i.imgur.com/SEU-LINK-08.png",
+        description:
+            "A primeira peça da história KOFIVE.",
 
-        print: "01",
-        color: "#a4d5ff"
+        front:
+            "https://i.imgur.com/SEU-FRONT-08.png",
+
+        back:
+            "https://i.imgur.com/SEU-BACK-08.png"
     }
 
 ];
 
 
 /* ==========================================
-   ELEMENTOS
+   RENDER PRODUTOS
 ========================================== */
 
 const productsGrid =
@@ -137,223 +191,98 @@ const productsGrid =
     );
 
 
-const cartCount =
-    document.getElementById(
-        "cartCount"
-    );
-
-
-const toast =
-    document.getElementById(
-        "toast"
-    );
-
-
-const navLinks =
-    document.getElementById(
-        "navLinks"
-    );
-
-
-const menuButton =
-    document.getElementById(
-        "menuButton"
-    );
-
-
-/* ==========================================
-   CARRINHO
-========================================== */
-
-let cart = 0;
-
-
-/* ==========================================
-   TOAST
-========================================== */
-
-function showToast(message) {
-
-    toast.textContent = message;
-
-    toast.classList.add("show");
-
-    clearTimeout(
-        window.toastTimer
-    );
-
-    window.toastTimer =
-        setTimeout(() => {
-
-            toast.classList.remove(
-                "show"
-            );
-
-        }, 2400);
-}
-
-
-/* ==========================================
-   RENDERIZAR PRODUTOS
-========================================== */
-
 function renderProducts(
     filter = "Todos"
 ) {
 
-    const visibleProducts =
+    if (!productsGrid) return;
+
+
+    const filtered =
         filter === "Todos"
 
-            ? products
+        ? products
 
-            : products.filter(
-                product =>
-                    product.category === filter
-            );
+        : products.filter(
+            product =>
+                product.category === filter
+        );
 
 
     productsGrid.innerHTML =
-        visibleProducts.map(
-            (product) => {
+        filtered.map(product => `
 
-                const realIndex =
-                    products.indexOf(product);
+            <article
+                class="product-card"
+                onclick="openProduct(${product.id})"
+            >
 
+                <div class="product-images">
 
-                return `
-
-                    <article
-                        class="product-card glass"
+                    <img
+                        src="${product.front}"
+                        class="product-front"
+                        alt="${product.name} frente"
                     >
 
-                        <div
-                            class="product-image"
-                        >
+                    <img
+                        src="${product.back}"
+                        class="product-back"
+                        alt="${product.name} costas"
+                    >
 
-                            ${
-                                product.image.includes(
-                                    "SEU-LINK"
-                                )
+                    <div class="image-indicator">
 
-                                ?
+                        <span></span>
+                        <span></span>
 
-                                `
-                                <div
-                                    class="mini-shirt"
-                                    data-print="${product.print}"
-                                    style="
-                                        --print:
-                                        ${product.color}
-                                    "
-                                ></div>
-                                `
+                    </div>
 
-                                :
-
-                                `
-                                <img
-                                    src="${product.image}"
-                                    alt="${product.name}"
-                                    loading="lazy"
-                                    onerror="
-                                        this.style.display='none';
-                                        this.nextElementSibling.style.display='block';
-                                    "
-                                >
-
-                                <div
-                                    class="mini-shirt"
-                                    data-print="${product.print}"
-                                    style="
-                                        --print:
-                                        ${product.color};
-                                        display:none;
-                                    "
-                                ></div>
-                                `
-                            }
-
-                        </div>
+                </div>
 
 
-                        <div
-                            class="product-info"
-                        >
+                <div class="product-info">
 
-                            <h3>
-                                ${product.name}
-                            </h3>
+                    <h3 class="product-name">
+                        ${product.name}
+                    </h3>
 
 
-                            <div
-                                class="product-meta"
-                            >
+                    <div class="product-bottom">
 
-                                <span>
-                                    ${product.category}
-                                </span>
+                        <span class="product-category">
+                            ${product.category}
+                        </span>
 
-                                <span
-                                    class="price"
-                                >
-                                    ${product.price}
-                                </span>
+                        <span class="product-price">
+                            ${product.price}
+                        </span>
 
-                            </div>
+                    </div>
 
 
-                            <button
-                                class="add-button"
-                                data-index="${realIndex}"
-                            >
+                    <button
+                        class="product-action"
+                    >
+                        VER PRODUTO →
+                    </button>
 
-                                Adicionar ao carrinho +
+                </div>
 
-                            </button>
+            </article>
 
-                        </div>
-
-                    </article>
-
-                `;
-
-            }
-        ).join("");
+        `).join("");
+}
 
 
-    /* ======================================
-       BOTÕES DE ADICIONAR
-    ====================================== */
+/* ==========================================
+   ABRIR PRODUTO
+========================================== */
 
-    document
-        .querySelectorAll(".add-button")
-        .forEach(button => {
+function openProduct(id) {
 
-            button.addEventListener(
-                "click",
-                () => {
-
-                    const index =
-                        Number(
-                            button.dataset.index
-                        );
-
-                    const product =
-                        products[index];
-
-                    cart++;
-
-                    cartCount.textContent =
-                        cart;
-
-                    showToast(
-                        `${product.name} adicionada ao carrinho ✦`
-                    );
-
-                }
-            );
-
-        });
+    window.location.href =
+        `produto.html?id=${id}`;
 
 }
 
@@ -368,15 +297,17 @@ document
 
         button.addEventListener(
             "click",
-            () => {
+            event => {
+
+                event.stopPropagation();
+
 
                 document
                     .querySelectorAll(".filter")
-                    .forEach(
-                        filter =>
-                            filter.classList.remove(
-                                "active"
-                            )
+                    .forEach(btn =>
+                        btn.classList.remove(
+                            "active"
+                        )
                     );
 
 
@@ -399,139 +330,32 @@ document
    MENU MOBILE
 ========================================== */
 
-menuButton.addEventListener(
-    "click",
-    () => {
-
-        navLinks.classList.toggle(
-            "open"
-        );
-
-    }
-);
-
-
-/* ==========================================
-   FECHAR MENU AO CLICAR
-========================================== */
-
-document
-    .querySelectorAll(".nav-link")
-    .forEach(link => {
-
-        link.addEventListener(
-            "click",
-            () => {
-
-                navLinks.classList.remove(
-                    "open"
-                );
-
-            }
-        );
-
-    });
-
-
-/* ==========================================
-   NAVEGAÇÃO ATIVA
-========================================== */
-
-const sections =
-    document.querySelectorAll(
-        "section[id]"
+const menuButton =
+    document.getElementById(
+        "menuButton"
     );
 
 
-const navigationLinks =
-    document.querySelectorAll(
-        ".nav-link"
+const navLinks =
+    document.getElementById(
+        "navLinks"
     );
 
 
-window.addEventListener(
-    "scroll",
-    () => {
+if (menuButton) {
 
-        let currentSection = "";
-
-        sections.forEach(section => {
-
-            const sectionTop =
-                section.offsetTop - 180;
-
-            if (
-                window.scrollY >=
-                sectionTop
-            ) {
-
-                currentSection =
-                    section.getAttribute(
-                        "id"
-                    );
-
-            }
-
-        });
-
-
-        navigationLinks.forEach(link => {
-
-            link.classList.remove(
-                "active"
-            );
-
-
-            if (
-                link.getAttribute(
-                    "href"
-                ) ===
-                `#${currentSection}`
-            ) {
-
-                link.classList.add(
-                    "active"
-                );
-
-            }
-
-        });
-
-    }
-);
-
-
-/* ==========================================
-   BOTÃO DO CARRINHO
-========================================== */
-
-document
-    .getElementById("cartButton")
-    .addEventListener(
+    menuButton.addEventListener(
         "click",
         () => {
 
-            if (cart === 0) {
-
-                showToast(
-                    "Seu carrinho está vazio."
-                );
-
-                return;
-
-            }
-
-
-            showToast(
-                `Seu carrinho possui ${cart} ${
-                    cart === 1
-                        ? "item"
-                        : "itens"
-                }.`
+            navLinks.classList.toggle(
+                "open"
             );
 
         }
     );
+
+}
 
 
 /* ==========================================
@@ -544,45 +368,431 @@ const ideaForm =
     );
 
 
-ideaForm.addEventListener(
-    "submit",
-    event => {
+if (ideaForm) {
 
-        event.preventDefault();
+    ideaForm.addEventListener(
+        "submit",
+        event => {
 
-
-        const name =
-            document
-                .getElementById(
-                    "ideaName"
-                )
-                .value
-                .trim();
+            event.preventDefault();
 
 
-        showToast(
-            `Valeu, ${name}! Sua ideia foi registrada. ✦`
+            const name =
+                document
+                    .getElementById(
+                        "ideaName"
+                    )
+                    .value;
+
+
+            showToast(
+                `Obrigado, ${name}! Sua ideia foi registrada.`
+            );
+
+
+            ideaForm.reset();
+
+        }
+    );
+
+}
+
+
+/* ==========================================
+   TOAST
+========================================== */
+
+function showToast(message) {
+
+    const toast =
+        document.getElementById(
+            "toast"
         );
 
 
-        ideaForm.reset();
+    if (!toast) return;
 
-    }
-);
+
+    toast.textContent =
+        message;
+
+
+    toast.classList.add(
+        "show"
+    );
+
+
+    setTimeout(
+        () => {
+
+            toast.classList.remove(
+                "show"
+            );
+
+        },
+        2500
+    );
+
+}
 
 
 /* ==========================================
-   ANO DO FOOTER
+   PÁGINA DO PRODUTO
 ========================================== */
 
-document.getElementById(
-    "year"
-).textContent =
-    new Date().getFullYear();
+const productPage =
+    document.getElementById(
+        "productPage"
+    );
+
+
+if (productPage) {
+
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+
+
+    const id =
+        Number(
+            params.get("id")
+        );
+
+
+    const product =
+        products.find(
+            item =>
+                item.id === id
+        );
+
+
+    if (!product) {
+
+        productPage.innerHTML = `
+
+            <div class="glass"
+                 style="
+                    padding:50px;
+                    border-radius:25px;
+                    text-align:center;
+                 "
+            >
+
+                <h1>
+                    Produto não encontrado.
+                </h1>
+
+                <br>
+
+                <a
+                    href="index.html"
+                    class="button button-primary"
+                >
+                    VOLTAR À LOJA
+                </a>
+
+            </div>
+
+        `;
+
+    } else {
+
+        renderProductPage(product);
+
+    }
+
+}
 
 
 /* ==========================================
-   INICIALIZAÇÃO
+   RENDER PÁGINA PRODUTO
+========================================== */
+
+function renderProductPage(product) {
+
+    productPage.innerHTML = `
+
+        <div class="product-detail">
+
+
+            <!-- GALERIA -->
+
+            <div class="detail-gallery">
+
+                <div class="detail-thumbnails">
+
+                    <div
+                        class="detail-thumb"
+                        onclick="changeMainImage('${product.front}')"
+                    >
+
+                        <img
+                            src="${product.front}"
+                            alt="Frente"
+                        >
+
+                    </div>
+
+
+                    <div
+                        class="detail-thumb"
+                        onclick="changeMainImage('${product.back}')"
+                    >
+
+                        <img
+                            src="${product.back}"
+                            alt="Costas"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="detail-main-image"
+                >
+
+                    <img
+                        id="mainProductImage"
+                        src="${product.front}"
+                        alt="${product.name}"
+                    >
+
+                </div>
+
+            </div>
+
+
+
+            <!-- INFORMAÇÕES -->
+
+            <div class="detail-info">
+
+                <span class="detail-category">
+                    ${product.category}
+                </span>
+
+
+                <h1>
+                    ${product.name}
+                </h1>
+
+
+                <div class="detail-price">
+                    ${product.price}
+                </div>
+
+
+                <p class="detail-description">
+                    ${product.description}
+                </p>
+
+
+                <!-- TAMANHOS -->
+
+                <div class="size-title">
+                    ESCOLHA O TAMANHO
+                </div>
+
+
+                <div class="sizes">
+
+                    <button class="size">
+                        P
+                    </button>
+
+                    <button class="size active">
+                        M
+                    </button>
+
+                    <button class="size">
+                        G
+                    </button>
+
+                    <button class="size">
+                        GG
+                    </button>
+
+                </div>
+
+
+                <!-- ENDEREÇO -->
+
+                <div class="address-box">
+
+                    <h3>
+                        ENDEREÇO DE ENTREGA
+                    </h3>
+
+
+                    <div class="address-grid">
+
+                        <input
+                            type="text"
+                            placeholder="Nome completo"
+                            required
+                        >
+
+                        <input
+                            type="text"
+                            placeholder="CEP"
+                            required
+                        >
+
+                        <input
+                            class="full"
+                            type="text"
+                            placeholder="Rua / Avenida"
+                            required
+                        >
+
+                        <input
+                            type="text"
+                            placeholder="Número"
+                            required
+                        >
+
+                        <input
+                            type="text"
+                            placeholder="Complemento"
+                        >
+
+                        <input
+                            class="full"
+                            type="text"
+                            placeholder="Cidade"
+                            required
+                        >
+
+                        <input
+                            class="full"
+                            type="text"
+                            placeholder="Estado"
+                            required
+                        >
+
+                    </div>
+
+
+                    <button
+                        class="
+                            button
+                            button-primary
+                            buy-button
+                        "
+                        onclick="fakeCheckout()"
+                    >
+                        CONTINUAR COMPRA →
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    /* TAMANHOS */
+
+    document
+        .querySelectorAll(".size")
+        .forEach(button => {
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    document
+                        .querySelectorAll(".size")
+                        .forEach(
+                            size =>
+                                size.classList.remove(
+                                    "active"
+                                )
+                        );
+
+
+                    button.classList.add(
+                        "active"
+                    );
+
+                }
+            );
+
+        });
+
+}
+
+
+/* ==========================================
+   TROCAR IMAGEM
+========================================== */
+
+function changeMainImage(url) {
+
+    const image =
+        document.getElementById(
+            "mainProductImage"
+        );
+
+
+    if (!image) return;
+
+
+    image.style.opacity = "0";
+
+
+    setTimeout(
+        () => {
+
+            image.src = url;
+
+            image.style.opacity = "1";
+
+        },
+        180
+    );
+
+}
+
+
+/* ==========================================
+   CHECKOUT TEMPORÁRIO
+========================================== */
+
+function fakeCheckout() {
+
+    showToast(
+        "Pedido preparado! O pagamento será configurado posteriormente."
+    );
+
+}
+
+
+/* ==========================================
+   ANO
+========================================== */
+
+const year =
+    document.getElementById(
+        "year"
+    );
+
+
+if (year) {
+
+    year.textContent =
+        new Date().getFullYear();
+
+}
+
+
+/* ==========================================
+   INICIAR
 ========================================== */
 
 renderProducts();
